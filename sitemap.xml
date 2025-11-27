@@ -1,70 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- ============================================ -->
+  <!-- MAIN PAGES (11 pages) -->
+  <!-- ============================================ -->
   <url>
-    <loc>https://bestsalondelray.com/</loc>
+    <loc>https://www.bestsalondelray.com/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/services.html</loc>
+    <loc>https://www.bestsalondelray.com/services.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/neighborhoods.html</loc>
+    <loc>https://www.bestsalondelray.com/neighborhoods.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/hair-care.html</loc>
+    <loc>https://www.bestsalondelray.com/hair-care.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/booking.html</loc>
-    <lastmod>2025-11-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- New Content Pages -->
-  <url>
-    <loc>https://bestsalondelray.com/balayage-delray-beach.html</loc>
+    <loc>https://www.bestsalondelray.com/booking.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/color-correction-delray.html</loc>
+    <loc>https://www.bestsalondelray.com/balayage-delray-beach.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/blonde-specialist-delray.html</loc>
+    <loc>https://www.bestsalondelray.com/color-correction-delray.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/keratin-treatment-delray.html</loc>
+    <loc>https://www.bestsalondelray.com/blonde-specialist-delray.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/keratin-treatment-delray.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/boutique-salon-guide.html</loc>
+    <loc>https://www.bestsalondelray.com/boutique-salon-guide.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bestsalondelray.com/hair-extensions-delray.html</loc>
+    <loc>https://www.bestsalondelray.com/hair-extensions-delray.html</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- CONTENT LIBRARY PAGES (10 pages) -->
+  <!-- ============================================ -->
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/senior-hair-services.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/dimensional-color-explained.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/organic-hair-color-guide.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/hair-loss-solutions-delray.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/wedding-updo-guide.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/beach-hair-protection.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/teen-haircuts-delray.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/hair-gloss-treatment-guide.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/salon-etiquette-guide.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bestsalondelray.com/content-library/root-touch-up-guide.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
