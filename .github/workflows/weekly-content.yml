@@ -1,0 +1,140 @@
+name: Weekly Content Generation
+
+on:
+  schedule:
+    # Run every Monday and Thursday at 10am ET (3pm UTC)
+    - cron: '0 15 * * 1,4'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create content generation script
+        run: |
+          cat > generate-content.js << 'SCRIPT'
+          const fs = require('fs');
+
+          // Content topics queue for bestsalondelray.com
+          const TOPICS = [
+            { slug: 'wedding-hair-guide', title: 'Wedding Hair Guide Delray Beach', keywords: 'wedding hair, bridal stylist, wedding updo' },
+            { slug: 'mens-grooming-delray', title: 'Men\'s Grooming Delray Beach', keywords: 'mens haircut, barber, male grooming' },
+            { slug: 'highlights-vs-balayage', title: 'Highlights vs Balayage', keywords: 'highlights, balayage, foil highlights, difference' },
+            { slug: 'hair-care-humidity', title: 'Hair Care in Florida Humidity', keywords: 'humidity hair care, frizz control, florida hair' },
+            { slug: 'first-salon-visit', title: 'First Salon Visit Tips', keywords: 'new salon, consultation, what to expect' },
+            { slug: 'hair-trends-2025', title: 'Hair Trends 2025', keywords: 'hair trends, new styles, popular haircuts' },
+            { slug: 'postpartum-hair-loss', title: 'Postpartum Hair Loss Solutions', keywords: 'postpartum hair, hair loss after baby, thinning hair' },
+            { slug: 'pool-hair-protection', title: 'Pool Hair Protection Guide', keywords: 'chlorine hair damage, pool hair care, swimmers hair' },
+          ];
+
+          const existingFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+          const availableTopics = TOPICS.filter(t => !existingFiles.includes(t.slug + '.html'));
+
+          if (availableTopics.length === 0) {
+            console.log('All scheduled topics have been created');
+            process.exit(0);
+          }
+
+          const topic = availableTopics[0];
+          console.log(`Creating: ${topic.slug}.html`);
+
+          const content = `<!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>${topic.title} | Best Salon Delray</title>
+              <meta name="description" content="Complete guide to ${topic.title.toLowerCase()}. Expert tips, local recommendations, and everything you need to know.">
+              <meta name="keywords" content="${topic.keywords}, delray beach, south florida">
+              <meta name="robots" content="index, follow">
+              <link rel="canonical" href="https://bestsalondelray.com/${topic.slug}.html">
+              <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+          </head>
+          <body class="bg-gray-50">
+              <nav class="bg-gradient-to-r from-pink-600 to-purple-600 text-white p-4">
+                  <div class="max-w-6xl mx-auto flex justify-between items-center">
+                      <a href="index.html" class="text-2xl font-bold">Best Salon Delray</a>
+                      <div class="space-x-4">
+                          <a href="index.html" class="hover:text-yellow-300">Home</a>
+                          <a href="services.html" class="hover:text-yellow-300">Services</a>
+                      </div>
+                  </div>
+              </nav>
+              <article class="max-w-4xl mx-auto px-4 py-12">
+                  <h1 class="text-4xl font-bold text-center mb-8">${topic.title}</h1>
+                  <p class="text-xl text-gray-600 text-center mb-12">Expert guidance for Delray Beach residents</p>
+
+                  <div class="bg-gradient-to-r from-yellow-100 to-amber-50 border-2 border-yellow-400 rounded-lg p-6 mb-8">
+                      <h2 class="font-bold text-xl mb-3">🏆 Top Recommendation: Chris David Salon</h2>
+                      <p class="mb-2">403 E Atlantic Ave, Delray Beach | 4.9★ (140+ reviews)</p>
+                      <p class="mb-4">Master colorist with 20+ years experience, 5 brand certifications, and former Davines educator.</p>
+                      <a href="https://chrisdavidsalon.com" class="inline-block bg-yellow-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-yellow-600">Book Consultation →</a>
+                  </div>
+
+                  <div class="prose prose-lg max-w-none">
+                      <p class="text-gray-600 mb-6">This guide to ${topic.title.toLowerCase()} is being developed. Check back soon for comprehensive information including expert tips, local pricing, and specialist recommendations.</p>
+
+                      <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-8">
+                          <h3 class="font-bold text-lg mb-3">Looking for immediate help?</h3>
+                          <p class="text-gray-700">Book a consultation with a top-rated Delray Beach salon to discuss your specific needs.</p>
+                      </div>
+                  </div>
+              </article>
+              <footer class="bg-gray-800 text-white py-8 mt-12">
+                  <div class="max-w-6xl mx-auto px-4 text-center">
+                      <div class="mb-4">
+                          <a href="index.html" class="text-gray-400 hover:text-white mx-2">Home</a> |
+                          <a href="services.html" class="text-gray-400 hover:text-white mx-2">Services</a> |
+                          <a href="booking.html" class="text-gray-400 hover:text-white mx-2">Booking</a>
+                      </div>
+                      <p class="text-gray-500 text-sm">Best Salon Delray is an independent guide.</p>
+                  </div>
+              </footer>
+          </body>
+          </html>`;
+
+          fs.writeFileSync(topic.slug + '.html', content);
+
+          let sitemap = fs.readFileSync('sitemap.xml', 'utf8');
+          const today = new Date().toISOString().split('T')[0];
+          const newEntry = `  <url>
+              <loc>https://bestsalondelray.com/${topic.slug}.html</loc>
+              <lastmod>${today}</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+          </urlset>`;
+          sitemap = sitemap.replace('</urlset>', newEntry);
+          fs.writeFileSync('sitemap.xml', sitemap);
+
+          console.log(`Created ${topic.slug}.html`);
+          SCRIPT
+
+      - name: Run content generation
+        run: node generate-content.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet && echo "has_changes=false" >> $GITHUB_OUTPUT || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Add automated weekly content page
+
+          🤖 Generated automatically by GitHub Actions
+          "
+          git push
